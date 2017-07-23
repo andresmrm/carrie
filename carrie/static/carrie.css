@@ -1,3 +1,18 @@
 body {
 	font-family: sans-serif;
+	background-color: black;
+	color: darkred;
+}
+
+.ui-buttonset {
+	display: flex;
+}
+
+.ui-buttonset button {
+	flex-grow: 1;
+	height: 70px;
+	background-color: black;
+	color: darkred;
+	border: solid 1px darkred;
+	margin: 1px;
 }

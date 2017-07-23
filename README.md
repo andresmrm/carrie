@@ -28,6 +28,8 @@ If the client player is `mplayer` then these additional functions are available:
 Screenshots
 -----------
 
+![web interface](https://rawgit.com/andresmrm/carrie/master/doc/web.png)
+
 See the `doc` directory.
 
 How does it work?
