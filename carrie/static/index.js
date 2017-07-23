@@ -27,7 +27,23 @@ send = function(command) {
 	};
 };
 
+
+
+
 $(function () {
+
+
+	// Find the right method, call on correct element
+	function launchFullScreen(element) {
+	  if(element.requestFullScreen) {
+		element.requestFullScreen();
+	  } else if(element.mozRequestFullScreen) {
+		element.mozRequestFullScreen();
+	  } else if(element.webkitRequestFullScreen) {
+		element.webkitRequestFullScreen();
+	  }
+	}
+
 	$("div").buttonset();
 	$("span").buttonset();
 	$(".fakebutton").button().attr("disabled", "true");
@@ -41,5 +57,12 @@ $(function () {
 	$("#volup").button({icons: {secondary:'ui-icon-plus'}}).on("click", send("volup"));
 	$("#osdon").button({icons: {primary:'ui-icon-bullet'}}).on("click", send("osdon"));
 	$("#osdoff").button({icons: {secondary:'ui-icon-radio-on'}}).on("click", send("osdoff"));
-	$("#fullscreen").button({icons: {secondary:'ui-icon-lightbulb'}}).on("click", send("fullscreen"));
+	//$("#fullscreen").button({icons: {secondary:'ui-icon-lightbulb'}}).on("click", send("fullscreen"));
+	$("#fullscreen").button({icons: {secondary:'ui-icon-lightbulb'}}).on("click", function() {launchFullScreen(document.documentElement)});
 });
+
+
+
+
+// Launch fullscreen for browsers that support it!
+//launchFullScreen(document.documentElement); // the whole page
