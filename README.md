@@ -35,7 +35,7 @@ See the `doc` directory.
 How does it work?
 -----------------
 
-`carrie` is a process running on the machine doing the media playback. It opens a port (5505 by default) and supplies a simple web interface. Alternatively the `carrie` Android application can send commands to the same port from an Android phone or tablet..
+`carrie` is a process running on the machine doing the media playback. It opens a port (50000 by default) and supplies a simple web interface. Alternatively the `carrie` Android application can send commands to the same port from an Android phone or tablet..
 
 When a command is received the server will attempt to control a web browser showing Flash video. If one is not found then the server will try to control mplayer via a FIFO object - this uses the 'slave mode' feature of `mplayer`. `mplayer` must be configured in advance to listen on the FIFO.
 
@@ -112,7 +112,9 @@ Run::
 
     > carrie
 
-This will start the server and listen on port 5505, using a FIFO on /tmp/mplayer.fifo to communicate with mplayer. The FIFO will be created if it doesn't already exist.
+This will start the server and listen on port 50000, using a FIFO on /tmp/mplayer.fifo to communicate with mplayer. The FIFO will be created if it doesn't already exist.
+
+**If that doesn't work, run `run.py`.**
 
 Run::
 
@@ -129,7 +131,7 @@ Control via browser
 
 Open a web browser and visit::
 
-    http://<server>:5505
+    http://<server>:50000
 
 For controlling Flash video this should be done from a different window, or different computer, from the screen showing the video. It is not possible to control videos on one tab from a different tab.
 
