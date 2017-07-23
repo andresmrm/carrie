@@ -25,7 +25,7 @@ from carrie import log
 from carrie import fifo
 from carrie import server
 
-DEFAULT_PORT = 5505
+DEFAULT_PORT = 50000
 
 def main():
 	"""Entry point to `carrie` command line tool."""
