@@ -38,6 +38,8 @@ app = flask.Flask(__name__)
 # filename = resource_filename(Requirement.parse("MyProject"),"sample.conf")
 # version=pkg_resources.require('carrie')[0].version)
 
+VOLUME_STEP = 5
+
 
 @app.route('/')
 def index():
@@ -102,7 +104,14 @@ def pause():
 	# 	else:
 	# 		return 'no media player found'
 
-	return xorg.auto_command('pause')['message']
+
+	res = fifo.send("pause")
+	if res == 'ok':
+		return 'ok'
+	else:
+		return 'no media player found'
+
+	# return xorg.auto_command('pause')['message']
 
 
 @app.route('/forward/<int:seconds>')
@@ -125,8 +134,8 @@ def volup():
 	- Tell the window manager to increase the volume and
 	- Tell mplayer to increase the volume
 	"""
-	xorg.shell('xdotool', 'key', 'XF86AudioRaiseVolume')
-	fifo.send("volume 20")
+	#xorg.shell('xdotool', 'key', 'XF86AudioRaiseVolume')
+	[fifo.send("volume 1") for i in range(VOLUME_STEP)]
 	return 'ok'
 
 
@@ -136,8 +145,8 @@ def voldown():
 	- Tell the window manager to decrease the volume and
 	- Tell mplayer to increase the volume
 	"""
-	xorg.shell('xdotool', 'key', 'XF86AudioLowerVolume')
-	fifo.send("volume -20")
+	#xorg.shell('xdotool', 'key', 'XF86AudioLowerVolume')
+	[fifo.send("volume -1") for i in range(VOLUME_STEP)]
 	return 'ok'
 
 
@@ -163,10 +172,10 @@ def mute():
 	if fifo.send("mute") == 'ok':
 		return 'ok'
 
-	else:
-		xorg.shell('xdotool', 'key', 'XF86AudioMute')
+	#else:
+	#	xorg.shell('xdotool', 'key', 'XF86AudioMute')
 
-	return 'ok'
+	#return 'ok'
 
 
 @app.route('/osdon')
