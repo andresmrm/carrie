@@ -1,5 +1,15 @@
+
+
 Carrie Remote Control
 =====================
+
+**This is a fork from the original [repository](https://github.com/mjem/carrie).**
+Main changes:
+
+- Created a new start script (`run.py`), the old one wasn't working.
+- Fixed and improved Mplayer support (possibly breaking support to other players).
+- Better web page theme for dark places.
+- Changed default port.
 
 Introduction
 ------------
