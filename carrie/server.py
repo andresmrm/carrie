@@ -38,7 +38,7 @@ app = flask.Flask(__name__)
 # filename = resource_filename(Requirement.parse("MyProject"),"sample.conf")
 # version=pkg_resources.require('carrie')[0].version)
 
-VOLUME_STEP = 5
+VOLUME_STEP = 2
 
 
 @app.route('/')
